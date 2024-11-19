@@ -15,12 +15,39 @@ const TaskList = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5001/api/tasks')
-      .then(response => {
-        setTasks(response.data);
-      })
-      .catch(error => console.error('There was an error fetching tasks!', error));
+    fetchTasks();
   }, []);
+
+  const fetchTasks = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        // Handle case where token is not available
+        alert('You are not authenticated!');
+        return;
+      }
+  
+      const response = await fetch('http://localhost:5001/api/tasks', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,  // Include token in the header
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        // Set tasks to state or process them
+        setTasks(data);
+      } else {
+        console.error('Error fetching tasks:', data);
+      }
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
 
   return (
     <div className="container mt-4">
