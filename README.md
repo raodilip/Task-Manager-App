@@ -7,13 +7,13 @@ A full-stack Task Management application built using the **MERN Stack** (MongoDB
 ## **Screenshots**
 
 ### **Task List**
-![Task List Screenshot](/taskList.png)
+![Task List Screenshot](assets/taskList.png)
 
 ### **Task Creation/Edition**
-![Task Creation Screenshot](/edit.png)
+![Task Creation Screenshot](assets/edit.png)
 
 ### **Login Page**
-![Login Page Screenshot](/login.png)
+![Login Page Screenshot](assets/login.png)
 
 
 ## **Features**
